@@ -1,0 +1,15 @@
+.content{
+    grid-area: c;
+    background-color: firebrick
+  }
+  .page_logo{
+    width:100%;
+    height: 100px;
+  }
+  .page_logo_img{
+    width:100%;
+    height: 100%;
+  }
+  .item{
+    color: goldenrod;
+  }
