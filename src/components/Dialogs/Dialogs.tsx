@@ -8,6 +8,7 @@ interface IDialogItemProps {
 }
 interface IMessageProps {
     Text: string
+    ID:number
 }
 const _dialogsData: IDialogItemProps[] = [{
     UserName: 'User1',
@@ -32,6 +33,19 @@ const _dialogsData: IDialogItemProps[] = [{
 {
     UserName: 'User6',
     DialogID: 6
+}]
+const _messagesData: IMessageProps[]=[{
+    Text:'Hi',
+    ID:1
+},{
+    Text:'Hello',
+    ID:2
+},{
+    Text:'How are u?',
+    ID:3
+},{
+    Text:'Yo!s',
+    ID:4
 }]
 const DialogItem: React.FC<IDialogItemProps> = (props) => {
     const { UserName, DialogID } = { ...props }
@@ -59,10 +73,10 @@ const Dialogs: React.FC = () => {
                 <DialogItem UserName="User6" DialogID={6} />
             </div>
             <div className={css.messages}>
-                <Message Text="Hi" />
-                <Message Text="Hello" />
-                <Message Text="How are u?" />
-                <Message Text="Yo!s" />
+                <Message Text="Hi" ID={1} />
+                <Message Text="Hello" ID={2} />
+                <Message Text="How are u?" ID={3} />
+                <Message Text="Yo!s" ID={4} />
             </div>
         </div>
     )

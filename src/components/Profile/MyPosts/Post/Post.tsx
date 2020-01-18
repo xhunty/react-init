@@ -1,9 +1,10 @@
 import React from 'react'
 import css from './Post.module.css'
 
-interface IPostProps{
+export interface IPostProps{
     message:string
     likes:number
+    id:number
 }
 const Post: React.FC<IPostProps> = (props) =>{
     const {message,likes} = {...props};
