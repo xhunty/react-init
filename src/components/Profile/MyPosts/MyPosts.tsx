@@ -31,7 +31,7 @@ const _postsData: IPostProps[]=[{
     message:'message7',
     likes:1238
 }]
-
+const postsElements = _postsData.map( p => <Post id={p.id} message={p.message} likes={p.likes} />)
 const MyPosts: React.FC = () => {
     return (
         <div className={css.posts}>
@@ -45,13 +45,7 @@ const MyPosts: React.FC = () => {
                 </div>
             </div>
             <div >
-                <Post id={1} message='Hi, how are you?' likes={14} />
-                <Post id={2} message='Its my first post' likes={123} />
-                <Post id={3} message='Its my first post' likes={123} />
-                <Post id={4} message='Its my first post' likes={123} />
-                <Post id={5} message='Its my first post' likes={123} />
-                <Post id={6} message='Its my first post' likes={123} />
-                <Post id={7} message='Its my first post' likes={123} />
+                {postsElements}
             </div>
         </div>)
 }

@@ -61,22 +61,16 @@ const Message: React.FC<IMessageProps> = (props) => {
         <div className={css.message}>{Text}</div>
     )
 }
+const messagesElements = _messagesData.map(message => <Message Text={message.Text} ID={message.ID} />)
+const dialogsElements = _dialogsData.map(dialog => <DialogItem UserName={dialog.UserName} DialogID={dialog.DialogID} />)
 const Dialogs: React.FC = () => {
     return (
         <div className={css.dialogs}>
-            <div className={css.dialog_items}>
-                <DialogItem UserName="User1" DialogID={1} />
-                <DialogItem UserName="User2" DialogID={2} />
-                <DialogItem UserName="User3" DialogID={3} />
-                <DialogItem UserName="User4" DialogID={4} />
-                <DialogItem UserName="User5" DialogID={5} />
-                <DialogItem UserName="User6" DialogID={6} />
+            <div className={css.dialog_items}>                
+                {dialogsElements}
             </div>
             <div className={css.messages}>
-                <Message Text="Hi" ID={1} />
-                <Message Text="Hello" ID={2} />
-                <Message Text="How are u?" ID={3} />
-                <Message Text="Yo!s" ID={4} />
+                {messagesElements}
             </div>
         </div>
     )
