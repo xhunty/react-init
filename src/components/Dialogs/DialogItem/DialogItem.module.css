@@ -1,0 +1,6 @@
+.dialog_items .active{
+    color: chartreuse;
+}
+.dialog:link{
+    color:white;
+}

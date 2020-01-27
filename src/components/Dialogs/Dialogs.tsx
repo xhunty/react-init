@@ -1,15 +1,10 @@
 import React from 'react'
 import css from './Dialogs.module.css'
-import { NavLink } from 'react-router-dom'
+import DialogItem, { IDialogItemProps } from './DialogItem/DialogItem'
+import Message,{IMessageProps} from './Message/Message'
 
-interface IDialogItemProps {
-    UserName: string
-    DialogID: number
-}
-interface IMessageProps {
-    Text: string
-    ID:number
-}
+
+
 const _dialogsData: IDialogItemProps[] = [{
     UserName: 'User1',
     DialogID: 1
@@ -47,20 +42,8 @@ const _messagesData: IMessageProps[]=[{
     Text:'Yo!s',
     ID:4
 }]
-const DialogItem: React.FC<IDialogItemProps> = (props) => {
-    const { UserName, DialogID } = { ...props }
-    return (
-        <div className={css.dialog}>
-            <NavLink to={`/dialogs/${DialogID}`}>{UserName}</NavLink>
-        </div>
-    )
-}
-const Message: React.FC<IMessageProps> = (props) => {
-    const { Text } = { ...props }
-    return (
-        <div className={css.message}>{Text}</div>
-    )
-}
+
+
 const messagesElements = _messagesData.map(message => <Message Text={message.Text} ID={message.ID} />)
 const dialogsElements = _dialogsData.map(dialog => <DialogItem UserName={dialog.UserName} DialogID={dialog.DialogID} />)
 const Dialogs: React.FC = () => {
