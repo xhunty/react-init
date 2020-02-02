@@ -9,8 +9,9 @@ import Settings from './components/Settings/Settings'
 import {Route, BrowserRouter} from 'react-router-dom'
 import Music from './components/Music/Music';
 import News from './components/News/News';
+import { IMyPostsProps } from './components/Profile/MyPosts/MyPosts';
 
-const App: React.FC = () => {
+const App: React.FC<IMyPostsProps> = (props) => {
   return (
     <BrowserRouter>
     <div className="app-wrapper">
@@ -18,7 +19,7 @@ const App: React.FC = () => {
       <NavBar />
       <div className='app-wrapper-content'>
         <Route path="/dialogs" component={Dialogs}/>
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile" render = {() => <Profile allposts = {props.allposts} status="app" />} />
         <Route path="/settings" component={Settings} />
         <Route path="/music" component={Music} />
         <Route path="/news" component={News} />

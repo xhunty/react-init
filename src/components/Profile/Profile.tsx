@@ -1,13 +1,14 @@
 import React from 'react';
 import css from './Profile.module.css'
-import MyPosts from './MyPosts/MyPosts';
+import MyPosts, { IMyPostsProps } from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile: React.FC = () => {
+
+const Profile: React.FC<IMyPostsProps> = (props) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts />
+      <MyPosts allposts = {props.allposts} status ="test"/>
     </div>)
 }
 
