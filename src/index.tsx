@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { IMyPostsProps } from './components/Profile/MyPosts/MyPosts';
+import { IMessageProps } from './components/Dialogs/Message/Message';
+import { IDialogItemProps } from './components/Dialogs/DialogItem/DialogItem';
 
 const _posts:IMyPostsProps = {
     allposts : [{
@@ -38,7 +40,45 @@ const _posts:IMyPostsProps = {
     status:'test'
   }
 
-ReactDOM.render(<App allposts={_posts.allposts} status="top" />, document.getElementById('root'));
+const _dialogsData: IDialogItemProps[] = [{
+    UserName: 'User1 from top',
+    DialogID: 1
+},
+{
+    UserName: 'User2',
+    DialogID: 2
+},
+{
+    UserName: 'User3',
+    DialogID: 3
+},
+{
+    UserName: 'User4',
+    DialogID: 4
+},
+{
+    UserName: 'User5',
+    DialogID: 5
+},
+{
+    UserName: 'User6',
+    DialogID: 6
+}]
+const _messagesData: IMessageProps[]=[{
+    Text:'Hi from top',
+    ID:1
+},{
+    Text:'Hello',
+    ID:2
+},{
+    Text:'How are u?',
+    ID:3
+},{
+    Text:'Yo!s',
+    ID:4
+}]
+
+ReactDOM.render(<App posts={_posts.allposts} messages={_messagesData} dialogs={_dialogsData} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
