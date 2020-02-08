@@ -5,3 +5,7 @@
 .dialog_items{
     padding: 10px;
 }
+.messages{
+    display:grid;
+    grid-template-rows: repeat(3,1fr);
+}

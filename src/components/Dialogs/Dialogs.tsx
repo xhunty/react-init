@@ -11,15 +11,26 @@ export interface IDialogsProps{
 const Dialogs: React.FC<IDialogsProps> = (props) => {
     const messagesElements = props.messaes.map(message => <Message Text={message.Text} ID={message.ID} />)
     const dialogsElements = props.dialogs.map(dialog => <DialogItem UserName={dialog.UserName} DialogID={dialog.DialogID} />)
-
+    const newmessageRef = React.createRef<HTMLTextAreaElement>();
+    const addNewMessageHandler = () => {
+        alert(newmessageRef.current?.value);
+    }
     return (
         <div className={css.dialogs}>
             <div className={css.dialog_items}>                
                 {dialogsElements}
             </div>
             <div className={css.messages}>
-                {messagesElements}
-            </div>
+                <div>
+                    {messagesElements}
+                </div>
+                <div>
+                    <textarea ref={newmessageRef}></textarea>                    
+                </div>
+                <div>
+                    <button onClick = { addNewMessageHandler }>Send message</button>
+                </div>                
+            </div>            
         </div>
     )
 }
