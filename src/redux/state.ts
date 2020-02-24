@@ -1,6 +1,7 @@
 import { IMyPostsProps } from "../components/Profile/MyPosts/MyPosts"
 import { IDialogItemProps } from "../components/Dialogs/DialogItem/DialogItem"
 import { IMessageProps } from "../components/Dialogs/Message/Message"
+import { IPostProps } from "../components/Profile/MyPosts/Post/Post"
 
 const _posts:IMyPostsProps = {
     allposts : [{
@@ -32,7 +33,15 @@ const _posts:IMyPostsProps = {
       message:'message7',
       likes:1238
     }],
-    status:'test'
+    status:'test',
+    addPost:(postMessage:string) => {
+      const newPost: IPostProps = {
+        id:5,
+        message:postMessage,
+        likes:0
+      }
+      state.posts.allposts.push(newPost);
+    }
 }
 const _dialogsData: IDialogItemProps[] = [{
     UserName: 'User1 from top',
@@ -82,4 +91,12 @@ const state: IState = {
     dialogs : _dialogsData,
     messages : _messagesData
 }
+export const addPost = (postMessage:string) => {
+  const newPost: IPostProps = {
+    id:5,
+    message:postMessage,
+    likes:0
+  }
+  state.posts.allposts.push(newPost);
+} 
 export default state;

@@ -8,7 +8,7 @@ const Profile: React.FC<IMyPostsProps> = (props) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts allposts = {props.allposts} status ="test"/>
+      <MyPosts allposts = {props.allposts} status ="test" addPost={props.addPost}/>
     </div>)
 }
 

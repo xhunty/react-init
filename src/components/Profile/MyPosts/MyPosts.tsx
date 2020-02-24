@@ -5,14 +5,16 @@ import Post, { IPostProps } from './Post/Post';
 
 export interface IMyPostsProps{
     allposts:IPostProps[],
-    status:string
+    status:string,
+    addPost:Function
 }
 const MyPosts: React.FC<IMyPostsProps> = (props) => {
     
     const postsElements = props.allposts.map( p => <Post id={p.id} message={p.message} likes={p.likes} />)
     const newPostRef= React.createRef<HTMLTextAreaElement>();
     const addPostHandler = () => {
-        alert(newPostRef.current?.value);
+        //alert(newPostRef.current?.value);
+        props.addPost(newPostRef.current?.value);
     }
     return (
         <div className={css.posts}>

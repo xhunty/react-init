@@ -23,7 +23,7 @@ const App: React.FC<IAppState> = (props) => {
       <NavBar />
       <div className='app-wrapper-content'>
         <Route path="/dialogs" render = {() => <Dialogs messaes={props.appState.messages} dialogs={props.appState.dialogs} />}/>
-        <Route path="/profile" render = {() => <Profile allposts = {props.appState.posts.allposts} status="app" />} />
+        <Route path="/profile" render = {() => <Profile allposts = {props.appState.posts.allposts} status="app" addPost={props.appState.posts.addPost}/>} />
         <Route path="/settings" component={Settings} />
         <Route path="/music" component={Music} />
         <Route path="/news" component={News} />
