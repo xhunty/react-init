@@ -1,16 +1,13 @@
 import React from 'react'
 import css from './Dialogs.module.css'
-import DialogItem, { IDialogItemProps } from './DialogItem/DialogItem'
-import Message,{IMessageProps} from './Message/Message'
+import { DialogPage } from '../../model/model'
+import Message from './Message/Message'
+import DialogItem from './DialogItem/DialogItem'
 
-export interface IDialogsProps{
-    dialogs:IDialogItemProps[],
-    messaes:IMessageProps[]
-}
 
-const Dialogs: React.FC<IDialogsProps> = (props) => {
-    const messagesElements = props.messaes.map(message => <Message Text={message.Text} ID={message.ID} />)
-    const dialogsElements = props.dialogs.map(dialog => <DialogItem UserName={dialog.UserName} DialogID={dialog.DialogID} />)
+const Dialogs: React.FC<DialogPage> = (props) => {
+    const messagesElements = props.Messages.map(message => <Message Text={message.Text} ID={message.ID} />)
+    const dialogsElements = props.Dialogs.map(dialog => <DialogItem UserName={dialog.UserName} DialogID={dialog.ID} />)
     const newmessageRef = React.createRef<HTMLTextAreaElement>();
     const addNewMessageHandler = () => {
         alert(newmessageRef.current?.value);

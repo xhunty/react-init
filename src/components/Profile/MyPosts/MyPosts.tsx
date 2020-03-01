@@ -1,27 +1,25 @@
 import React from 'react';
 import css from './MyPosts.module.css'
-import Post, { IPostProps } from './Post/Post';
+import { ProfilePage } from '../../../model/model';
+import Post from './Post/Post';
 
-
-export interface IMyPostsProps{
-    allposts:IPostProps[],
-    status:string,
-    addPost:Function
-}
-const MyPosts: React.FC<IMyPostsProps> = (props) => {
+const MyPosts: React.FC<ProfilePage> = (props) => {
     
-    const postsElements = props.allposts.map( p => <Post id={p.id} message={p.message} likes={p.likes} />)
+    const postsElements = props.Posts.map( p => <Post ID ={p.ID} Message={p.Message} Likes={p.Likes} />)
     const newPostRef= React.createRef<HTMLTextAreaElement>();
     const addPostHandler = () => {
-        //alert(newPostRef.current?.value);
         props.addPost(newPostRef.current?.value);
+    }
+    const onPostChangeHandler = (ev: React.FormEvent<HTMLTextAreaElement>) => {
+        console.log(ev.currentTarget.value);
+        console.log(newPostRef.current?.value);
     }
     return (
         <div className={css.posts}>
             <h3>My Posts</h3>
             <div>
                 <div>
-                    <textarea ref = {newPostRef}></textarea>
+                    <textarea onChange={onPostChangeHandler} ref = {newPostRef} value={props.NewPostText} />
                 </div>
                 <div>
                     <button onClick={addPostHandler}>Add Post</button>

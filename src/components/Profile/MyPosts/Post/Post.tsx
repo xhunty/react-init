@@ -1,20 +1,17 @@
 import React from 'react'
 import css from './Post.module.css'
+import { PostProps } from '../../../../model/model';
 
-export interface IPostProps{
-    message:string
-    likes:number
-    id:number
-}
-const Post: React.FC<IPostProps> = (props) =>{
-    const {message,likes} = {...props};
+
+const Post: React.FC<PostProps> = (props) =>{
+    const {Message,Likes} = {...props};
     return(
         <div className={css.item}>
             <div>
                 <img src='https://amp.spark.ru/public/img/user_ava_big.png'></img>
             </div>
-            <div>{message}</div>
-            <span>likes:{likes}</span>
+            <div>{Message}</div>
+            <span>likes:{Likes}</span>
         </div>
     )
 }

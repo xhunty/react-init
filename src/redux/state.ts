@@ -1,102 +1,94 @@
-import { IMyPostsProps } from "../components/Profile/MyPosts/MyPosts"
-import { IDialogItemProps } from "../components/Dialogs/DialogItem/DialogItem"
-import { IMessageProps } from "../components/Dialogs/Message/Message"
-import { IPostProps } from "../components/Profile/MyPosts/Post/Post"
+import { Store, PostProps } from "../model/model"
 
-const _posts:IMyPostsProps = {
-    allposts : [{
-      id:1,
-      message:'message1 test app top',
-      likes:12
-    },{
-      id:2,
-      message:'message2',
-      likes:123
-    },{
-      id:3,
-      message:'message3',
-      likes:1234
-    },{
-      id:4,
-      message:'message4',
-      likes:1235
-    },{
-      id:5,
-      message:'message5',
-      likes:6
-    },{
-      id:6,
-      message:'message6',
-      likes:1237
-    },{
-      id:7,
-      message:'message7',
-      likes:1238
-    }],
-    status:'test',
-    addPost:(postMessage:string) => {
-      const newPost: IPostProps = {
-        id:5,
-        message:postMessage,
-        likes:0
+const store: Store = {
+  state: {
+    profilePage: {
+      Posts: [
+        {
+          ID: 1,
+          Message: 'message1 test app top',
+          Likes: 12
+        }, {
+          ID: 2,
+          Message: 'message2',
+          Likes: 123
+        }, {
+          ID: 3,
+          Message: 'message3',
+          Likes: 1234
+        }, {
+          ID: 4,
+          Message: 'message4',
+          Likes: 1235
+        }, {
+          ID: 5,
+          Message: 'message5',
+          Likes: 6
+        }, {
+          ID: 6,
+          Message: 'message6',
+          Likes: 1237
+        }, {
+          ID: 7,
+          Message: 'message7',
+          Likes: 1238
+        }
+      ],
+      NewPostText: 'new post text',
+      addPost: (postMessage: string) => {
+        console.log('add posr func -->', postMessage);
+        const newPost: PostProps = {
+          ID: 5,
+          Message: postMessage,
+          Likes: 0
+        }
+        store.state.profilePage.Posts.push(newPost);
       }
-      state.posts.allposts.push(newPost);
+    },
+    dialogPage: {
+      Dialogs: [{
+        UserName: 'User1 from top',
+        ID: 1
+      },
+      {
+        UserName: 'User2',
+        ID: 2
+      },
+      {
+        UserName: 'User3',
+        ID: 3
+      },
+      {
+        UserName: 'User4',
+        ID: 4
+      },
+      {
+        UserName: 'User5',
+        ID: 5
+      },
+      {
+        UserName: 'User6',
+        ID: 6
+      }],
+      Messages: [
+        {
+          Text: 'Hi from top',
+          ID: 1
+        },
+        {
+          Text: 'Hello',
+          ID: 2
+        },
+        {
+          Text: 'How are u?',
+          ID: 3
+        },
+        {
+          Text: 'Yo!s',
+          ID: 4
+        }
+      ]
     }
-}
-const _dialogsData: IDialogItemProps[] = [{
-    UserName: 'User1 from top',
-    DialogID: 1
-},
-{
-    UserName: 'User2',
-    DialogID: 2
-},
-{
-    UserName: 'User3',
-    DialogID: 3
-},
-{
-    UserName: 'User4',
-    DialogID: 4
-},
-{
-    UserName: 'User5',
-    DialogID: 5
-},
-{
-    UserName: 'User6',
-    DialogID: 6
-}]
-const _messagesData: IMessageProps[]=[{
-    Text:'Hi from top',
-    ID:1
-},{
-    Text:'Hello',
-    ID:2
-},{
-    Text:'How are u?',
-    ID:3
-},{
-    Text:'Yo!s',
-    ID:4
-}]
-
-export interface IState{
-    posts:IMyPostsProps,
-    dialogs:IDialogItemProps[],
-    messages:IMessageProps[]
-}
-const state: IState = {
-    posts : _posts,
-    dialogs : _dialogsData,
-    messages : _messagesData
-}
-export const addPost = (postMessage:string) => {
-  const newPost: IPostProps = {
-    id:5,
-    message:postMessage,
-    likes:0
   }
-  state.posts.allposts.push(newPost);
-} 
-export default state;
+}
+export default store;

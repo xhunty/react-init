@@ -1,14 +1,15 @@
 import React from 'react';
 import css from './Profile.module.css'
-import MyPosts, { IMyPostsProps } from './MyPosts/MyPosts';
+import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import { ProfilePage } from '../../model/model';
 
 
-const Profile: React.FC<IMyPostsProps> = (props) => {
+const Profile: React.FC<ProfilePage> = (props) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts allposts = {props.allposts} status ="test" addPost={props.addPost}/>
+      <MyPosts Posts = {props.Posts} addPost={props.addPost} NewPostText={props.NewPostText}/>
     </div>)
 }
 
