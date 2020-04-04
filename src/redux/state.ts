@@ -1,6 +1,8 @@
 import { Store, PostProps } from "../model/model"
-import { rerender } from "..";
 
+
+let rerender = (store: Store) : void =>{
+}
 const store: Store = {
   state: {
     profilePage: {
@@ -98,5 +100,8 @@ const store: Store = {
       ]
     }
   }
+}
+export const subscribe = (observer:typeof rerender) =>{
+  rerender = observer;
 }
 export default store;
