@@ -1,4 +1,5 @@
 import { Store, PostProps } from "../model/model"
+import { rerender } from "..";
 
 const store: Store = {
   state: {
@@ -43,6 +44,13 @@ const store: Store = {
           Likes: 0
         }
         store.state.profilePage.Posts.push(newPost);
+        store.state.profilePage.NewPostText = '';
+        rerender(store);
+      },
+      updateNewPostText: (newText: string) => {
+        debugger;
+        store.state.profilePage.NewPostText = newText;
+        rerender(store);
       }
     },
     dialogPage: {

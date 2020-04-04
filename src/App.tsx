@@ -19,7 +19,7 @@ const App: React.FC<Store> = (props) => {
       <NavBar />
       <div className='app-wrapper-content'>
         <Route path="/dialogs" render = {() => <Dialogs Messages={props.state.dialogPage.Messages} Dialogs={props.state.dialogPage.Dialogs} />}/>
-        <Route path="/profile" render = {() => <Profile Posts = {props.state.profilePage.Posts} addPost={props.state.profilePage.addPost} NewPostText={props.state.profilePage.NewPostText}/>} />
+        <Route path="/profile" render = {() => <Profile updateNewPostText={props.state.profilePage.updateNewPostText} Posts = {props.state.profilePage.Posts} addPost={props.state.profilePage.addPost} NewPostText={props.state.profilePage.NewPostText}/>} />
         <Route path="/settings" component={Settings} />
         <Route path="/music" component={Music} />
         <Route path="/news" component={News} />
