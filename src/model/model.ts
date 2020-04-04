@@ -1,5 +1,7 @@
 export type Store = {
-    state:State
+    state:State,
+    subscriber:Function,
+    subscribe:Function
 }
 export type State = {
     profilePage:ProfilePage,

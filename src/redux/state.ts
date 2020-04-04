@@ -1,8 +1,5 @@
 import { Store, PostProps } from "../model/model"
 
-
-let rerender = (store: Store) : void =>{
-}
 const store: Store = {
   state: {
     profilePage: {
@@ -47,12 +44,11 @@ const store: Store = {
         }
         store.state.profilePage.Posts.push(newPost);
         store.state.profilePage.NewPostText = '';
-        rerender(store);
+        store.subscriber(store.state);
       },
       updateNewPostText: (newText: string) => {
-        debugger;
         store.state.profilePage.NewPostText = newText;
-        rerender(store);
+        store.subscriber(store.state);
       }
     },
     dialogPage: {
@@ -99,9 +95,13 @@ const store: Store = {
         }
       ]
     }
+  },
+  subscriber: () =>{
+    console.log('no subscribers');
+  },
+  subscribe:(observer:Function) =>{
+    store.subscriber = observer;
   }
 }
-export const subscribe = (observer:typeof rerender) =>{
-  rerender = observer;
-}
+
 export default store;

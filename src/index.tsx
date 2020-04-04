@@ -4,19 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import store, { subscribe } from './redux/state'
-import { Store } from './model/model';
+import store from './redux/state'
+import {  State } from './model/model';
 
-//ReactDOM.render(<App state = {store.state} />, document.getElementById('root'));
 
-const rerender = (store: Store) => {
-    ReactDOM.render(<App state = {store.state} />, document.getElementById('root'));
+const rerender = (state: State) => {
+    ReactDOM.render(<App dialogPage={state.dialogPage} profilePage={state.profilePage} />, document.getElementById('root'));
 }
-const testFunc = (id:number): string =>{
-    return id.toString();
-}
-rerender(store);
-subscribe(rerender);
+store.subscribe(rerender);
+rerender(store.state);
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
