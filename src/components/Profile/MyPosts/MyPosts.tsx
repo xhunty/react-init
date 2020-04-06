@@ -11,8 +11,6 @@ const MyPosts: React.FC<ProfilePage> = (props) => {
         props.addPost(newPostRef.current?.value ?? '');
     }
     const onPostChangeHandler = (ev: React.FormEvent<HTMLTextAreaElement>) => {
-        console.log(ev.currentTarget.value);
-        console.log(newPostRef.current?.value);
         props.updateNewPostText(ev.currentTarget.value)        
     }
     return (

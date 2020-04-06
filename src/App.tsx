@@ -12,7 +12,6 @@ import { State } from './model/model';
 
 
 const App: React.FC<State> = (props) => {
-  debugger;
   return (
     <BrowserRouter>
     <div className="app-wrapper">
