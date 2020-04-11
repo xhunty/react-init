@@ -1,4 +1,4 @@
-import { Store, PostProps, State } from "../model/model"
+import { Store,  State } from "../model/model"
 
 
 class TheStore implements Store{
@@ -34,19 +34,10 @@ class TheStore implements Store{
           Message: 'message7',
           Likes: 1238
         }],
-        addPost: (text:string) =>{
-          this.state.profilePage.Posts.push({
-            ID:5,
-            Message:text,
-            Likes:0
-          });
-          this.subscriber(this.state);
-        },
-        updateNewPostText:(newText:string) =>{
-          this.state.profilePage.NewPostText = newText;
-          this.subscriber(this.state);
-        },
-        NewPostText:''
+        NewPostText:'',
+        dispatch(){
+          console.log('fake');
+        }
       },
       dialogPage:{
         Dialogs:[{
@@ -89,6 +80,9 @@ class TheStore implements Store{
           Text: 'Yo!s',
           ID: 4
         }]
+      },
+      dispatch(){
+        console.log('fake');
       }
     }
     this.subscriber = () =>{
@@ -99,6 +93,23 @@ class TheStore implements Store{
   subscriber:Function
   subscribe(observer:Function){
     this.subscriber = observer
+  }
+  getState(){
+    return this.state;
+  }
+  dispatch(action:any){
+    if(action.type === 'ADD-POST'){
+      this.state.profilePage.Posts.push({
+        ID:5,
+        Message:this.state.profilePage.NewPostText,
+        Likes:0
+      });
+      this.subscriber(this.state);
+    }
+    else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+      this.state.profilePage.NewPostText = action.newText;
+      this.subscriber(this.state);
+    }
   }
 }
 

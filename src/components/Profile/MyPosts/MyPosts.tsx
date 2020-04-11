@@ -8,10 +8,17 @@ const MyPosts: React.FC<ProfilePage> = (props) => {
     const postsElements = props.Posts.map( p => <Post ID ={p.ID} Message={p.Message} Likes={p.Likes} />)
     const newPostRef= React.createRef<HTMLTextAreaElement>();
     const addPostHandler = () => {
-        props.addPost(newPostRef.current?.value ?? '');
+        //props.addPost(newPostRef.current?.value ?? '');
+        props.dispatch({
+            type:'ADD-POST'
+        });
     }
     const onPostChangeHandler = (ev: React.FormEvent<HTMLTextAreaElement>) => {
-        props.updateNewPostText(ev.currentTarget.value)        
+        //props.updateNewPostText(ev.currentTarget.value)   
+        props.dispatch({
+            type:'UPDATE-NEW-POST-TEXT',
+            newText:ev.currentTarget.value
+        })     
     }
     return (
         <div className={css.posts}>

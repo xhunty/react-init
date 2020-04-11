@@ -19,9 +19,8 @@ const App: React.FC<State> = (props) => {
       <NavBar />
       <div className='app-wrapper-content'>
         <Route path="/dialogs" render = {() => <Dialogs Messages={props.dialogPage.Messages} Dialogs={props.dialogPage.Dialogs} />}/>
-        <Route path="/profile" render = {() => <Profile updateNewPostText={props.profilePage.updateNewPostText} 
-                                                        Posts = {props.profilePage.Posts} 
-                                                        addPost={props.profilePage.addPost} 
+        <Route path="/profile" render = {() => <Profile dispatch={props.dispatch} 
+                                                        Posts = {props.profilePage.Posts}                                                         
                                                         NewPostText={props.profilePage.NewPostText}/>} />
         <Route path="/settings" component={Settings} />
         <Route path="/music" component={Music} />

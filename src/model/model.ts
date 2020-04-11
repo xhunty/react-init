@@ -1,17 +1,19 @@
 export type Store = {
     state:State,
     subscriber:Function,
-    subscribe:Function
+    subscribe:Function,
+    getState: () => State,
+    dispatch: (action: any) => void
 }
 export type State = {
     profilePage:ProfilePage,
-    dialogPage:DialogPage
+    dialogPage:DialogPage,
+    dispatch: Function
 }
 export type ProfilePage = {
     Posts:PostProps[],
     NewPostText:string,
-    addPost(postMessage: string) : void,
-    updateNewPostText(newText:string) : void
+    dispatch: Function
 }
 export type DialogPage = {
     Dialogs: DialogProps[],

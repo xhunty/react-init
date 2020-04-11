@@ -9,10 +9,10 @@ import {  State } from './model/model';
 
 
 const rerender = (state: State) => {
-    ReactDOM.render(<App dialogPage={state.dialogPage} profilePage={state.profilePage} />, document.getElementById('root'));
+    ReactDOM.render(<App dialogPage={state.dialogPage} profilePage={state.profilePage} dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
 }
 store.subscribe(rerender);
-rerender(store.state);
+rerender(store.getState());
 
 
 
