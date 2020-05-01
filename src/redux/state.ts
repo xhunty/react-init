@@ -1,5 +1,7 @@
 import { Store,  State } from "../model/model"
-
+const ADD_POST = 'ADD_POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
+const SEND_MESSAGE = 'SEND_MESSAGE'
 
 class TheStore implements Store{
   constructor(){
@@ -79,7 +81,10 @@ class TheStore implements Store{
         {
           Text: 'Yo!s',
           ID: 4
-        }]
+        }],
+        dispatch(){
+          console.log('fake');
+        }
       },
       dispatch(){
         console.log('fake');
@@ -98,7 +103,7 @@ class TheStore implements Store{
     return this.state;
   }
   dispatch(action:any){
-    if(action.type === 'ADD-POST'){
+    if(action.type === ADD_POST){
       this.state.profilePage.Posts.push({
         ID:5,
         Message:this.state.profilePage.NewPostText,
@@ -106,12 +111,22 @@ class TheStore implements Store{
       });
       this.subscriber(this.state);
     }
-    else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+    else if(action.type === UPDATE_NEW_POST_TEXT){
       this.state.profilePage.NewPostText = action.newText;
+      this.subscriber(this.state);
+    }
+    else if(action.type === SEND_MESSAGE){
+      this.state.dialogPage.Messages.push({
+        ID:10,
+        Text:action.text
+      });
       this.subscriber(this.state);
     }
   }
 }
-
 const store = new TheStore();
+export const addNewPostActionCreator = () => ({type:ADD_POST});
+export const updateNewPostTextActionCreator = (text:string) => ({type:UPDATE_NEW_POST_TEXT,newText:text});
+export const sendMessageActionCreator = (text:string) => ({type:SEND_MESSAGE,text:text});
+
 export default store;

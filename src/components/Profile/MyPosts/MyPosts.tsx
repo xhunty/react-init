@@ -2,6 +2,7 @@ import React from 'react';
 import css from './MyPosts.module.css'
 import { ProfilePage } from '../../../model/model';
 import Post from './Post/Post';
+import { updateNewPostTextActionCreator, addNewPostActionCreator } from '../../../redux/state';
 
 const MyPosts: React.FC<ProfilePage> = (props) => {
     
@@ -9,16 +10,12 @@ const MyPosts: React.FC<ProfilePage> = (props) => {
     const newPostRef= React.createRef<HTMLTextAreaElement>();
     const addPostHandler = () => {
         //props.addPost(newPostRef.current?.value ?? '');
-        props.dispatch({
-            type:'ADD-POST'
-        });
+        props.dispatch(addNewPostActionCreator());
     }
     const onPostChangeHandler = (ev: React.FormEvent<HTMLTextAreaElement>) => {
-        //props.updateNewPostText(ev.currentTarget.value)   
-        props.dispatch({
-            type:'UPDATE-NEW-POST-TEXT',
-            newText:ev.currentTarget.value
-        })     
+        //props.updateNewPostText(ev.currentTarget.value)
+        const action = updateNewPostTextActionCreator(ev.currentTarget.value)
+        props.dispatch(action);     
     }
     return (
         <div className={css.posts}>

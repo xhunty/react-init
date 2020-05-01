@@ -3,6 +3,7 @@ import css from './Dialogs.module.css'
 import { DialogPage } from '../../model/model'
 import Message from './Message/Message'
 import DialogItem from './DialogItem/DialogItem'
+import { sendMessageActionCreator } from '../../redux/state'
 
 
 const Dialogs: React.FC<DialogPage> = (props) => {
@@ -10,7 +11,8 @@ const Dialogs: React.FC<DialogPage> = (props) => {
     const dialogsElements = props.Dialogs.map(dialog => <DialogItem UserName={dialog.UserName} DialogID={dialog.ID} />)
     const newmessageRef = React.createRef<HTMLTextAreaElement>();
     const addNewMessageHandler = () => {
-        alert(newmessageRef.current?.value);
+        const action = sendMessageActionCreator(newmessageRef.current?.value ?? '');
+        props.dispatch(action);        
     }
     return (
         <div className={css.dialogs}>
