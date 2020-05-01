@@ -18,6 +18,7 @@ export type ProfilePage = {
 export type DialogPage = {
     Dialogs: DialogProps[],
     Messages:MessageProps[],
+    NewMessageText:string,
     dispatch: Function
 }
 export type PostProps = {
