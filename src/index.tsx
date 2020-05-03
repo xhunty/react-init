@@ -4,14 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import store from './redux/state'
+import store from './redux/redux-store'
 import {  State } from './model/model';
 
 
-const rerender = (state: State) => {
-    ReactDOM.render(<App dialogPage={state.dialogPage} profilePage={state.profilePage} dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
+const rerender = (state: any) => {
+    ReactDOM.render(<App dialogPage={state.dialogs} profilePage={state.profile} dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
 }
-store.subscribe(rerender);
+store.subscribe(()=>{
+    rerender(store.getState());
+})
 rerender(store.getState());
 
 

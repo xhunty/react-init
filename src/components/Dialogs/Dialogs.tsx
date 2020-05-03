@@ -3,7 +3,7 @@ import css from './Dialogs.module.css'
 import { DialogPage } from '../../model/model'
 import Message from './Message/Message'
 import DialogItem from './DialogItem/DialogItem'
-import { sendMessageActionCreator, updateNewMessageText } from '../../redux/dialogs-reducer'
+import { sendMessageActionCreator, updateNewMessageText } from "../../redux/sendMessageActionCreator"
 
 
 const Dialogs: React.FC<DialogPage> = (props) => {

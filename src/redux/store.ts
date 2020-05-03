@@ -1,10 +1,6 @@
 import { Store, State } from "../model/model"
 import profileReducer from "./profile-reducer"
 import dialogsReducer from "./dialogs-reducer"
-const ADD_POST = 'ADD_POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
-const SEND_MESSAGE = 'SEND_MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
 
 class TheStore implements Store {
   constructor() {

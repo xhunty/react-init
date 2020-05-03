@@ -1,8 +1,55 @@
 import { DialogPage } from "../model/model"
-const SEND_MESSAGE = 'SEND_MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
+import { SEND_MESSAGE, UPDATE_NEW_MESSAGE_TEXT } from "./types";
+import { AllActionTypes } from "./AllActionTypes";
 
-const dialogsReducer = (state: DialogPage, action: any) => {
+const initialState:DialogPage = {
+  Dialogs: [{
+    UserName: 'User1 from top',
+    ID: 1
+  },
+  {
+    UserName: 'User2',
+    ID: 2
+  },
+  {
+    UserName: 'User3',
+    ID: 3
+  },
+  {
+    UserName: 'User4',
+    ID: 4
+  },
+  {
+    UserName: 'User5',
+    ID: 5
+  },
+  {
+    UserName: 'User6',
+    ID: 6
+  }],
+  Messages: [{
+    Text: 'Hi from top',
+    ID: 1
+  },
+  {
+    Text: 'Hello',
+    ID: 2
+  },
+  {
+    Text: 'How are u?',
+    ID: 3
+  },
+  {
+    Text: 'Yo!s',
+    ID: 4
+  }],
+  NewMessageText: '',
+  dispatch() {
+    console.log('fake');
+  }
+}
+
+const dialogsReducer = (state = initialState, action: AllActionTypes) => {
   switch (action.type) {
     case SEND_MESSAGE:
       state.Messages.push({
@@ -12,14 +59,11 @@ const dialogsReducer = (state: DialogPage, action: any) => {
       state.NewMessageText = '';
       break;
     case UPDATE_NEW_MESSAGE_TEXT:
-      state.NewMessageText = action.newText;
+      state.NewMessageText = action.text;
       break;
     default:
       break;
   }
   return state;
 }
-
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
-export const updateNewMessageText = (text: string) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
 export default dialogsReducer;
