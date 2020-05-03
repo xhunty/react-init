@@ -1,14 +1,16 @@
-import { Store,  State } from "../model/model"
+import { Store, State } from "../model/model"
+import profileReducer from "./profile-reducer"
+import dialogsReducer from "./dialogs-reducer"
 const ADD_POST = 'ADD_POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 const SEND_MESSAGE = 'SEND_MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
 
-class TheStore implements Store{
-  constructor(){
+class TheStore implements Store {
+  constructor() {
     this.state = {
-      profilePage : {
-        Posts:[{
+      profilePage: {
+        Posts: [{
           ID: 1,
           Message: 'message1 test app top',
           Likes: 12
@@ -37,13 +39,13 @@ class TheStore implements Store{
           Message: 'message7',
           Likes: 1238
         }],
-        NewPostText:'',
-        dispatch(){
+        NewPostText: '',
+        dispatch() {
           console.log('fake');
         }
       },
-      dialogPage:{
-        Dialogs:[{
+      dialogPage: {
+        Dialogs: [{
           UserName: 'User1 from top',
           ID: 1
         },
@@ -60,14 +62,14 @@ class TheStore implements Store{
           ID: 4
         },
         {
-           UserName: 'User5',
+          UserName: 'User5',
           ID: 5
         },
         {
           UserName: 'User6',
           ID: 6
         }],
-        Messages:[{
+        Messages: [{
           Text: 'Hi from top',
           ID: 1
         },
@@ -83,58 +85,33 @@ class TheStore implements Store{
           Text: 'Yo!s',
           ID: 4
         }],
-        NewMessageText:'',
-        dispatch(){
+        NewMessageText: '',
+        dispatch() {
           console.log('fake');
         }
       },
-      dispatch(){
+      dispatch() {
         console.log('fake');
       }
     }
-    this.subscriber = () =>{
+    this.subscriber = () => {
       console.log('no subs')
     }
   }
-  state:State
-  subscriber:Function
-  subscribe(observer:Function){
+  state: State
+  subscriber: Function
+  subscribe(observer: Function) {
     this.subscriber = observer
   }
-  getState(){
+  getState() {
     return this.state;
   }
-  dispatch(action:any){
-    if(action.type === ADD_POST){
-      this.state.profilePage.Posts.push({
-        ID:5,
-        Message:this.state.profilePage.NewPostText,
-        Likes:0
-      });
-      this.subscriber(this.state);
-    }
-    else if(action.type === UPDATE_NEW_POST_TEXT){
-      this.state.profilePage.NewPostText = action.newText;
-      this.subscriber(this.state);
-    }
-    else if(action.type === SEND_MESSAGE){
-      this.state.dialogPage.Messages.push({
-        ID:10,
-        Text:this.state.dialogPage.NewMessageText
-      });
-      this.state.dialogPage.NewMessageText = '';
-      this.subscriber(this.state);
-    }
-    else if(action.type === UPDATE_NEW_MESSAGE_TEXT){
-      this.state.dialogPage.NewMessageText = action.newText;
-      this.subscriber(this.state);
-    }
+  dispatch(action: any) {
+    this.state.profilePage = profileReducer(this.state.profilePage, action);
+    this.state.dialogPage = dialogsReducer(this.state.dialogPage, action);
+    this.subscriber(this.state);
   }
 }
 const store = new TheStore();
-export const addNewPostActionCreator = () => ({type:ADD_POST});
-export const updateNewMessageText = (text:string) => ({type:UPDATE_NEW_MESSAGE_TEXT,newText:text});
-export const updateNewPostTextActionCreator = (text:string) => ({type:UPDATE_NEW_POST_TEXT,newText:text});
-export const sendMessageActionCreator = () => ({type:SEND_MESSAGE});
 
 export default store;
