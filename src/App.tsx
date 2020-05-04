@@ -9,19 +9,25 @@ import {Route, BrowserRouter} from 'react-router-dom'
 import Music from './components/Music/Music';
 import News from './components/News/News';
 import { State } from './model/model';
+import { connect } from 'react-redux';
+import { ReducerType } from './redux/redux-store';
 
 
-const App: React.FC<State> = (props) => {
+const App: React.FC<ReturnType<typeof mapStateToProps>> = (props) => {
+  debugger;
   return (
     <BrowserRouter>
     <div className="app-wrapper">
       <Header />
       <NavBar />
       <div className='app-wrapper-content'>
-        <Route path="/dialogs" render = {() => <Dialogs Messages={props.dialogPage.Messages} Dialogs={props.dialogPage.Dialogs} NewMessageText={props.dialogPage.NewMessageText} dispatch = {props.dispatch} />}/>
-        <Route path="/profile" render = {() => <Profile dispatch={props.dispatch} 
-                                                        Posts = {props.profilePage.Posts}                                                         
-                                                        NewPostText={props.profilePage.NewPostText}/>} />
+        <Route path="/dialogs" render = {() => <Dialogs Messages={props.dialogs.Messages} 
+                                                        Dialogs={props.dialogs.Dialogs} 
+                                                        NewMessageText={props.dialogs.NewMessageText} 
+                                                        dispatch = {props.dialogs.dispatch} />}/>
+        <Route path="/profile" render = {() => <Profile dispatch={props.profile.dispatch} 
+                                                        Posts = {props.profile.Posts}                                                         
+                                                        NewPostText={props.profile.NewPostText}/>} />
         <Route path="/settings" component={Settings} />
         <Route path="/music" component={Music} />
         <Route path="/news" component={News} />
@@ -31,4 +37,6 @@ const App: React.FC<State> = (props) => {
   );
 }
 
-export default App;
+const mapStateToProps = (state:ReducerType) => state
+
+export default connect(mapStateToProps)(App);

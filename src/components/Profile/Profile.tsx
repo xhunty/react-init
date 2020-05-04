@@ -6,6 +6,7 @@ import { ProfilePage } from '../../model/model';
 
 
 const Profile: React.FC<ProfilePage> = (props) => {
+
   return (
     <div>
       <ProfileInfo />

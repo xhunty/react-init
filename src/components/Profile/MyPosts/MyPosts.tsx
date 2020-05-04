@@ -2,7 +2,7 @@ import React from 'react';
 import css from './MyPosts.module.css'
 import { ProfilePage } from '../../../model/model';
 import Post from './Post/Post';
-import { addNewPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/sendMessageActionCreator";
+import { addNewPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/actions";
 
 const MyPosts: React.FC<ProfilePage> = (props) => {
     

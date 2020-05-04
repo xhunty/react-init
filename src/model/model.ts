@@ -12,8 +12,7 @@ export type State = {
 }
 export type ProfilePage = {
     Posts:PostProps[],
-    NewPostText:string,
-    dispatch: Function
+    NewPostText:string
 }
 export type DialogPage = {
     Dialogs: DialogProps[],

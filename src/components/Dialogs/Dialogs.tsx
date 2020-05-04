@@ -3,7 +3,7 @@ import css from './Dialogs.module.css'
 import { DialogPage } from '../../model/model'
 import Message from './Message/Message'
 import DialogItem from './DialogItem/DialogItem'
-import { sendMessageActionCreator, updateNewMessageText } from "../../redux/sendMessageActionCreator"
+import { sendMessageActionCreator, updateNewMessageText } from "../../redux/actions"
 
 
 const Dialogs: React.FC<DialogPage> = (props) => {
@@ -16,6 +16,7 @@ const Dialogs: React.FC<DialogPage> = (props) => {
         props.dispatch(action);        
     }
     const onTextChange = (ev:React.FormEvent<HTMLTextAreaElement>) => {
+        debugger;
         const action = updateNewMessageText(ev.currentTarget.value);
         props.dispatch(action);
     }

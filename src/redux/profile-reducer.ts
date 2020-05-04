@@ -32,10 +32,7 @@ const initialState: ProfilePage = {
     Message: 'message7',
     Likes: 1238
   }],
-  NewPostText: '',
-  dispatch() {
-    console.log('fake');
-  }
+  NewPostText: ''
 }
 
 const profileReducer = (state = initialState, action: AllActionTypes) => {
