@@ -36,9 +36,8 @@ class TheStore implements Store {
           Likes: 1238
         }],
         NewPostText: '',
-        dispatch() {
-          console.log('fake');
-        }
+        PublishPost:()=>{},
+        UpdateText:(t:string)=>{}
       },
       dialogPage: {
         Dialogs: [{
@@ -82,9 +81,8 @@ class TheStore implements Store {
           ID: 4
         }],
         NewMessageText: '',
-        dispatch() {
-          console.log('fake');
-        }
+        SendMessage:()=>{},
+        UpdateText:(t:string)=>{}
       },
       dispatch() {
         console.log('fake');

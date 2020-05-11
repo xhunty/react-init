@@ -44,9 +44,8 @@ const initialState:DialogPage = {
     ID: 4
   }],
   NewMessageText: '',
-  dispatch() {
-    console.log('fake');
-  }
+  SendMessage:()=>{},
+  UpdateText:(text:string)=>{}
 }
 
 const dialogsReducer = (state = initialState, action: AllActionTypes) => {

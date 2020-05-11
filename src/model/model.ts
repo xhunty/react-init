@@ -13,13 +13,15 @@ export type State = {
 export type ProfilePage = {
     Posts:PostProps[],
     NewPostText:string,
-    dispatch: Function
+    UpdateText: (text:string) => void,
+    PublishPost: () => void
 }
 export type DialogPage = {
     Dialogs: DialogProps[],
     Messages:MessageProps[],
     NewMessageText:string,
-    dispatch: Function
+    UpdateText: (text:string) => void,
+    SendMessage:() => void
 }
 export type PostProps = {
     ID:number,

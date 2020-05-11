@@ -33,9 +33,8 @@ const initialState: ProfilePage = {
     Likes: 1238
   }],
   NewPostText: '',
-  dispatch() {
-    console.log('fake');
-  }
+  PublishPost:()=>{},
+  UpdateText:(text:string)=>{}
 }
 
 const profileReducer = (state = initialState, action: AllActionTypes) => {

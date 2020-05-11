@@ -9,7 +9,7 @@ const Profile: React.FC<ProfilePage> = (props) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts Posts = {props.Posts} NewPostText={props.NewPostText} dispatch={props.dispatch}/>
+      <MyPosts Posts = {props.Posts} NewPostText={props.NewPostText} PublishPost={props.PublishPost} UpdateText={props.UpdateText} />
     </div>)
 }
 
