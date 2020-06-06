@@ -49,21 +49,21 @@ const initialState:DialogPage = {
 }
 
 const dialogsReducer = (state = initialState, action: AllActionTypes) => {
-  debugger;
   switch (action.type) {
     case SEND_MESSAGE:
-      state.Messages.push({
-        ID: 10,
-        Text: state.NewMessageText
-      });
-      state.NewMessageText = '';
-      break;
+      return {
+        ...state,
+        Messages: [...state.Messages,{ID:1,Text:state.NewMessageText}],
+        NewMessageText:''
+      };
     case UPDATE_NEW_MESSAGE_TEXT:
-      state.NewMessageText = action.text;
-      break;
+      return {
+        ...state,
+        NewMessageText:action.text
+      }
+      
     default:
-      break;
-  }
-  return state;
+      return state;
+  }  
 }
 export default dialogsReducer;

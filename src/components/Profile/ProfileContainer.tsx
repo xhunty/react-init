@@ -6,9 +6,9 @@ const mapStateToProps = (state:RootReducer) => ({
     Posts:state.profileReducer.Posts,
     NewPostText:state.profileReducer.NewPostText
 })
-const mapDispatchToProps = () => ({
-    UpdateText:(text:string) => updateNewPostTextActionCreator(text),
-    PublishPost:() => addNewPostActionCreator()
+const mapDispatchToProps = (dispatch:Function) => ({
+    UpdateText:(text:string) => dispatch(updateNewPostTextActionCreator(text)),
+    PublishPost:() => dispatch(addNewPostActionCreator())
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Profile)
