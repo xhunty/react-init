@@ -49,6 +49,7 @@ const initialState:DialogPage = {
 }
 
 const dialogsReducer = (state = initialState, action: AllActionTypes) => {
+  debugger;
   switch (action.type) {
     case SEND_MESSAGE:
       state.Messages.push({

@@ -11,13 +11,9 @@ const Dialogs: React.FC<DialogPage> = (props) => {
     const text = props.NewMessageText;
     const newmessageRef = React.createRef<HTMLTextAreaElement>();
     const addNewMessageHandler = () => {
-        //const action = sendMessageActionCreator();
-        //props.dispatch(action);
         props.SendMessage();      
     }
     const onTextChange = (ev:React.FormEvent<HTMLTextAreaElement>) => {
-        //const action = updateNewMessageText(ev.currentTarget.value);
-        //props.dispatch(action);
         props.UpdateText(ev.currentTarget.value);
     }
     return (
